@@ -18,6 +18,8 @@
 
 mod consts;
 mod error;
+mod rolls;
 mod score;
 pub use error::Error;
-type Result<T> = std::Result<T, Error>;
+pub use rolls::Rolls;
+type Result<T> = std::result::Result<T, Error>;
