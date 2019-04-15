@@ -58,15 +58,28 @@ fn score_all_gutterballs_returns_0() -> Result<()> {
 
 #[test]
 fn score_one_ball_returns_1() -> Result<()> {
-    // given an empty `Rolls`
+    // given a single roll
     let rolls = Rolls::new(&[1])?;
 
     // when `score()` is calculated
     let res = score(&rolls);
 
-    // then the result should be 0
+    // then the result should be 1
     assert_eq!(1, res);
 
     Ok(())
 }
 
+#[test]
+fn score_spare_score_1_returns_12() -> Result<()> {
+    // given a roll with a strike
+    let rolls = Rolls::new(&[5, 5, 1])?;
+
+    // when `score()` is calculated
+    let res = score(&rolls);
+
+    // then the result should be 12
+    assert_eq!(12, res);
+
+    Ok(())
+}
