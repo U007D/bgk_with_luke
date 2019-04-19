@@ -126,3 +126,31 @@ fn score_all_spares_returns_() -> Result<()> {
 
     Ok(())
 }
+
+#[test]
+fn score_strike_then_open() -> Result<()> {
+    // given a roll with a strike
+    let rolls = Rolls::new(&[10, 2, 2])?;
+
+    // when `score()` is calculated
+    let res = score(&rolls);
+
+    // then the result should be 12
+    assert_eq!(18, res);
+
+    Ok(())
+}
+
+#[test]
+fn score_all_strikes() -> Result<()> {
+    // given a roll with a strike
+    let rolls = Rolls::new(&[10, 12])?;
+
+    // when `score()` is calculated
+    let res = score(&rolls);
+
+    // then the result should be 12
+    assert_eq!(300, res);
+
+    Ok(())
+}
